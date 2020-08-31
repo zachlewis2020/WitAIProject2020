@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import axios from 'axios';
 const {Wit, log} = require('node-wit');
 
 const client = new Wit({
@@ -46,7 +45,14 @@ function App() {
 
         client.message(JSON.stringify(state.utterance), {})
             .then((data) => {
-                setState({answer: JSON.stringify(data)})
+                var result = JSON.stringify(data.intents);
+                console.log("FOO(" + result + ")");
+                if (result == '[]') {
+                    result = 'Ask a different Way ?'
+                } else {
+                    result = data.intents[0].name;
+                }
+                setState({answer: result})
                // setState({utterance: ''})
             })
             .catch(console.error);
@@ -55,13 +61,13 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Montgomery Now - Effective Information for your Now needs.</h1>
-            <form className={classes.root} noValidate autoComplete="off">
+            <h1>Montgomery Now<br/>Effective Information for your Now needs.</h1>
+            <form onSubmit={handleButton} className={classes.root} noValidate autoComplete="off">
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
                         <TextField
                         id="WitAIUtteranceText"
-                        label="Tell What your Now need is ?"
+                        label="How are you feeling ?"
                         rowsMax={4}
                         value={state.utterance || ""}
                         onChange={handleChange}
@@ -71,7 +77,7 @@ function App() {
                         <Button className={classes.button} variant="contained"
                                 color="secondary"
                                 endIcon={<Icon>send</Icon>}
-                        onClick={handleButton}>Ask Now !</Button>;
+                        onSubmit={handleButton}>Ask Now !</Button>;
                     </Grid>
                     <Grid item xs={12}>
                        Answer {state.answer}
