@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 const {Wit, log} = require('node-wit');
 
 const client = new Wit({
-    accessToken: 'FWAO7LFKNRQ567KDD2J2CLNOZJRCTCWX',
+    accessToken: ***NOTE REPLACE_WITH_YOUR_TOKEN****,
     logger: new log.Logger(log.DEBUG) // optional
 });
 
