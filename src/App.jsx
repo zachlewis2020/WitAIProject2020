@@ -78,7 +78,7 @@ function App() {
                         <Button className={classes.button} variant="contained"
                                 color="secondary"
                                 endIcon={<Icon>send</Icon>}
-                        onSubmit={handleButton}>Ask Now !</Button>;
+                        onSubmit={handleButton}>Tell Me </Button>;
                     </Grid>
                     <Grid item xs={12}>
                        Answer {state.answer}
