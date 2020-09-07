@@ -1,11 +1,12 @@
 import React, {useState }from 'react';
+import './App.css';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 const {Wit, log} = require('node-wit');
-import './App.css';
+
 
 const client = new Wit({
     accessToken: 'WWEPV7GJEHGK3Y42FCJLFMNWT2GBS4WL',
