@@ -39,15 +39,14 @@ function App() {
 
     const handleChange = (e) => setState({ utterance: e.target.value});
 
-    const handleButton = (e) => {
-            e.preventDefault()
+    const handleButton = async (e) => {
+        e.preventDefault();
         
-        
-        client.message(JSON.stringify(state.utterance), {})
+        await client.message(JSON.stringify(state.utterance), {})
             .then((data) => {
                 var result = JSON.stringify(data.intents);
             
-                if (result == '[]') {
+                if (result === '[]') {
                     result = 'I did not understand.  Please share your feelings ?'
                 } else {
                     result = data.intents[0].name;
@@ -74,10 +73,16 @@ function App() {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <Button className={classes.button} variant="contained"
-                                color="secondary"
-                                endIcon={<Icon>send</Icon>}
-                        onSubmit={handleButton}>Tell Me </Button>;
+                        <Button
+                            className={classes.button}
+                            variant="contained"
+                            color="secondary"
+                            endIcon={<Icon>send</Icon>}
+                            onSubmit={handleButton}
+                            onClick={handleButton}
+                        >
+                                Tell me how you feel
+                        </Button>
                     </Grid>
                     <Grid item xs={12}>
                        Answer {state.answer}
