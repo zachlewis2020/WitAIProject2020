@@ -41,15 +41,14 @@ function App() {
 
     const handleButton = (e) => {
             e.preventDefault()
-            console.log(state.utterance);
-            //alert(JSON.stringify(state.utterance));
-
+        
+        
         client.message(JSON.stringify(state.utterance), {})
             .then((data) => {
                 var result = JSON.stringify(data.intents);
-                console.log("FOO(" + result + ")");
+            
                 if (result == '[]') {
-                    result = 'Ask a different Way ?'
+                    result = 'I did not understand.  Please share your feelings ?'
                 } else {
                     result = data.intents[0].name;
                 }
