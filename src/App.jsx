@@ -48,7 +48,7 @@ function App() {
                 var result = JSON.stringify(data.intents);
                 console.log("FOO(" + result + ")");
                 if (result == '[]') {
-                    result = 'Ask a different Way ?'
+                    result = 'I did not Understand you. Please share your feeling ?'
                 } else {
                     result = data.intents[0].name;
                 }
