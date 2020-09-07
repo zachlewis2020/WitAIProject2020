@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 const {Wit, log} = require('node-wit');
 
 const client = new Wit({
-    accessToken: ***NOTE REPLACE_WITH_YOUR_TOKEN****,
+    accessToken: "WWEPV7GJEHGK3Y42FCJLFMNWT2GBS4WL",
     logger: new log.Logger(log.DEBUG) // optional
 });
 
@@ -41,7 +41,7 @@ function App() {
     const handleButton = (e) => {
             e.preventDefault()
             console.log(state.utterance);
-            //alert(JSON.stringify(state.utterance));
+            alert(JSON.stringify(state.utterance));
 
         client.message(JSON.stringify(state.utterance), {})
             .then((data) => {
