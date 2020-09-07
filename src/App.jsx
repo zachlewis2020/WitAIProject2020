@@ -87,7 +87,7 @@ export default () => {
                             onSubmit={handleButton}
                             onClick={handleButton}
                         >
-                            Tell me how you feel
+                            submit
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
