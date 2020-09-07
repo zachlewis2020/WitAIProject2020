@@ -60,10 +60,13 @@ export default () => {
 
     return (
         <div className="App">
-            <h1>
-                Montgomery Now<br />
-                Effective Information for your Now needs.
-            </h1>
+            <h2>
+                ELIZA
+            </h2>
+            <h4>
+                A Mock (Rogerian) Psychotherapist <br/>
+                Running on WitAI
+            </h4>
             <form onSubmit={handleButton} className={classes.root} noValidate autoComplete="off">
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
@@ -88,7 +91,7 @@ export default () => {
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
-                       Answer {state.answer}
+                       Response: {state.answer}
                     </Grid>
                 </Grid>
             </form>
