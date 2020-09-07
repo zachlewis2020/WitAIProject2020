@@ -1,12 +1,11 @@
 import React, {useState }from 'react';
-import './App.css';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 const {Wit, log} = require('node-wit');
-
+import './App.css';
 
 const client = new Wit({
     accessToken: 'WWEPV7GJEHGK3Y42FCJLFMNWT2GBS4WL',
@@ -33,7 +32,7 @@ const initState = {
     answer: ''
 }
 
-function App() {
+export default () => {
     const classes = useStyles();
     const [state, setState] = useState(initState);
 
@@ -47,7 +46,7 @@ function App() {
                 var result = JSON.stringify(data.intents);
             
                 if (result === '[]') {
-                    result = 'I did not understand.  Please share your feelings ?'
+                    result = 'Sorry, I did not understand. Please try again'
                 } else {
                     result = data.intents[0].name;
                 }
@@ -60,16 +59,19 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Montgomery Now<br/>Effective Information for your Now needs.</h1>
+            <h1>
+                Montgomery Now<br />
+                Effective Information for your Now needs.
+            </h1>
             <form onSubmit={handleButton} className={classes.root} noValidate autoComplete="off">
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
                         <TextField
-                        id="WitAIUtteranceText"
-                        label="How are you feeling ?"
-                        rowsMax={4}
-                        value={state.utterance || ""}
-                        onChange={handleChange}
+                            id="WitAIUtteranceText"
+                            label="How are you feeling?"
+                            rowsMax={4}
+                            value={state.utterance || ""}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -81,7 +83,7 @@ function App() {
                             onSubmit={handleButton}
                             onClick={handleButton}
                         >
-                                Tell me how you feel
+                            Tell me how you feel
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
@@ -92,5 +94,3 @@ function App() {
         </div>
     );
 }
-
-export default App;
